@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <title>AIDM7350 Individual Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul id="nav">
+        <li class="slide1"></li>
+        <li class="slide2"></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="person.html">Personal Information</a></li>
+        <li><a href="hometown.html">My Hometown</a></li>
+    </ul>
+    <div class="container">
+        <div class="video-container">
+            <iframe width="996" height="560" src="https://www.youtube.com/embed/7qYWU3PXplc" title="Zhanjiang City, Guangdong Province, China中國廣東省湛江市" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="text-box">
+            <p>Zhanjiang, located in Guangdong Province, China, is a beautiful coastal city known for its rich maritime culture and seafood industry. It has a long history and plays a significant role in China's economic and trade development.</p>
+            <p>The city boasts stunning natural landscapes, including Donghai Island, one of China's largest islands, and Huguangyan National Geopark, a rare maar lake formed by volcanic activity. Zhanjiang's coastline and beaches attract many tourists seeking relaxation and seafood delicacies.</p>
+            <p>As a major transportation hub, Zhanjiang has one of China's largest deep-water ports, facilitating international trade. The city is also a leader in agriculture and aquaculture, especially in shrimp farming.</p>
+        </div>
+    </div>
+    <a href="https://zh.wikipedia.org/wiki/%E6%B9%9B%E6%B1%9F%E5%B8%82" class="title">Introduction</a>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var currentPage = window.location.pathname.split("/").pop() || "hometown.html";
+
+        var activeLink = $("#nav a").filter(function () {
+            return $(this).attr("href") === currentPage;
+        });
+
+        if (activeLink.length > 0) {
+            var position = activeLink.parent().position();
+            var width = activeLink.parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        }
+    
+        $("#nav a").on("click", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        });
+    
+        $("#nav a").on("mouseover", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width }).addClass("squeeze");
+        });
+    
+        $("#nav a").on("mouseout", function () {
+            $("#nav .slide2").css({ opacity: 0 }).removeClass("squeeze");
+        });
+    });
+    </script>

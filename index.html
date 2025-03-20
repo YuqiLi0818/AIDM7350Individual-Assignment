@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>AIDM7350 Individual Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul id="nav">
+        <li class="slide1"></li>
+        <li class="slide2"></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="person.html">Personal Information</a></li>
+        <li><a href="hometown.html">My Hometown</a></li>
+    </ul>
+    <div class="white-square">
+        <div class="circle-container">
+            <img src="images/image1.jpg" class="image" height="30%" width="20%">
+        </div>
+        <div class="name">Li Yuqi</div>
+        <ul id="information">
+            <li>Sex: Female</li>
+            <li>Age: 24</li>
+            <li>Region: Guangdong, Zhanjiang</li>
+            <li>Profession: AI & Digital Media</li>
+            <li>Email: 24429589@life.hkbu.edu.hk</li>
+        </ul>
+        <div class="vertical-line"></div>
+        <div class="introduction-title">Personal Introduction</div>
+        <div class="content">I am a graduate student majoring in artificial intelligence and digital media, and I am enthusiastically engaged in the field of the combination of artificial intelligence and digital media.I also hope that I can apply the skills learned in school to my future work.</div>
+        <div class="content">In my spare time, I use my time to enrich my spare time. For example, I passed CET-4 and obtained the National Information Security Level One Certificate (NISP). I also got IELTS 6.5. I also used my vacation time to work as an intern in four companies, laying a solid foundation for my future work.</div>
+        <div class="content">Looking forward to the future, I look forward to translating my skills into practical results and creating more value for the society. At the same time, I also hope to contribute to the Internet through continuous learning and practice.I will always maintain the awe of knowledge and the desire for innovation, and strive to become an excellent talent in the field of information technology.</div>
+        <div class="photo-title">Photo Altas</div>
+        <img class="photo" src="images/photo1.jpg" width="180px" height="180px">
+        <img class="photo1" src="images/photo2.jpg" width="180px" height="180px">
+        <img class="photo1" src="images/photo3.jpg" width="180px" height="180px">
+        <img class="photo1" src="images/photo4.jpg" width="180px" height="180px">
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var currentPage = window.location.pathname.split("/").pop() || "hometown.html";
+
+        var activeLink = $("#nav a").filter(function () {
+            return $(this).attr("href") === currentPage;
+        });
+
+        if (activeLink.length > 0) {
+            var position = activeLink.parent().position();
+            var width = activeLink.parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        }
+    
+        $("#nav a").on("click", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        });
+    
+        $("#nav a").on("mouseover", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width }).addClass("squeeze");
+        });
+    
+        $("#nav a").on("mouseout", function () {
+            $("#nav .slide2").css({ opacity: 0 }).removeClass("squeeze");
+        });
+    });
+    </script>

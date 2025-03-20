@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <title>AIDM7350 Individual Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul id="nav">
+        <li class="slide1"></li>
+        <li class="slide2"></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="person.html">Personal Information</a></li>
+        <li><a href="hometown.html">My Hometown</a></li>
+    </ul>
+    <div class="white-square">
+        <div class="circle-container">
+            <img src="images/image1.jpg" class="image" height="30%" width="20%">
+        </div>
+        <div class="name">Li Yuqi</div>
+        <ul id="information">
+            <li>Sex: Female</li>
+            <li>Age: 24</li>
+            <li>Region: Guangdong, Zhanjiang</li>
+            <li>Profession: AI & Digital Media</li>
+            <li>Email: 24429589@life.hkbu.edu.hk</li>
+        </ul>
+        <div class="vertical-line"></div>
+        <div class="introduction-title">Basic Information</div>
+        <table>
+            <tr>
+                <th>Name: Li Yuqi</th>
+                <th>Birth: 2001.08.18</th>
+            </tr>
+            <tr>
+                <th>Profession: AI & Digital Media</th>
+                <th>Tel: +85259578190</th>
+            </tr>
+        </table>
+        <div class="photo-title">Education Background</div>
+        <table>
+            <tr>
+                <th>Undergraduate: Hong Kong Baptist University</th>
+                <th>Visit <a href="https://www.hkbu.edu.hk/">HKBU</a></th>
+            </tr>
+            <tr>
+                <th>Graduate: City University of Macau</th>
+                <th>Visit <a href="https://cityu.edu.mo/sao/list-1/234/">Cityu</a></th>
+            </tr>
+        </table>
+        <div class="photo-title">Master Skills</div>
+        <table>
+            <tr>
+                <th>Front-end: HTML, CSS, Javascript</th>
+                <th>Back-end: Java, Python</th>
+            </tr>
+            <tr>
+                <th>Big Data: Hadoop, Yarn, MapReduce</th>
+                <th>AI: CNN, RNN, Pytorch, Tensorflow</th>
+            </tr>
+        </table>
+        <div class="photo-title">Contact Me</div>
+        <table>
+            <tr>
+                <th>Contact Me: <a href="mailto: 24429589@life.hkbu.edu.hk">24429589@life.hkbu.edu.hk</a></th>
+            </tr>
+        </table>
+    </div>   
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var currentPage = window.location.pathname.split("/").pop() || "hometown.html";
+
+        var activeLink = $("#nav a").filter(function () {
+            return $(this).attr("href") === currentPage;
+        });
+
+        if (activeLink.length > 0) {
+            var position = activeLink.parent().position();
+            var width = activeLink.parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        }
+    
+        $("#nav a").on("click", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide1").css({ opacity: 1, left: +position.left, width: width });
+        });
+    
+        $("#nav a").on("mouseover", function () {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#nav .slide2").css({ opacity: 1, left: +position.left, width: width }).addClass("squeeze");
+        });
+    
+        $("#nav a").on("mouseout", function () {
+            $("#nav .slide2").css({ opacity: 0 }).removeClass("squeeze");
+        });
+    });
+    </script>
